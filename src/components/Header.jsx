@@ -9,11 +9,11 @@ const Header = () => (
   <header className="site-header">
     <div className="container">
       <h1 className="logo">
-        <Link to="/tutorialhub">Tutorials Hub</Link>
+        <Link to="/">Tutorials Hub</Link>
       </h1>
       {/* simple navigation: keep a home button for convenience */}
       <nav className="site-nav">
-        <Link to="/tutorialhub" className="home-button">
+        <Link to="/" className="home-button">
           Home
         </Link>
       </nav>

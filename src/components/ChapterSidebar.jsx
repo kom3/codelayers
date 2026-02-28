@@ -15,7 +15,7 @@ const ChapterSidebar = ({ topicId, chapters, activeChapterId }) => {
         <ul>
           {chapters.map((c) => (
             <li key={c.id} className={c.id === activeChapterId ? "active" : ""}>
-              <Link to={`/tutorialhub/${topicId}/${c.id}`}>{c.title}</Link>
+              <Link to={`/${topicId}/${c.id}`}>{c.title}</Link>
             </li>
           ))}
         </ul>

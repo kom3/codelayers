@@ -60,10 +60,10 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="tutorialhub/" element={<Landing />} />
+          <Route path="/" element={<Landing />} />
           {/* topicId is required; chapterId is optional and handled inside ViewPage */}
           <Route
-            path="tutorialhub/:topicId/:chapterId?"
+            path="/:topicId/:chapterId?"
             element={<ViewPage />}
           />
         </Routes>

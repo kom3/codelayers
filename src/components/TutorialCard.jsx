@@ -23,7 +23,7 @@ const TutorialCard = ({ id, title, subtitle, chapters, sections }) => {
   }
   return (
     <Card className="tutorial-card" elevation={2}>
-      <CardActionArea component={Link} to={`/tutorialhub/${id}`}>
+      <CardActionArea component={Link} to={`/${id}`}>
         <CardContent>
           <Typography variant="h6" component="h3">
             {title}

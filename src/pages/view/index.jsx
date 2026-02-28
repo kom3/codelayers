@@ -28,7 +28,7 @@ const ViewPage = () => {
       <div className="not-found-wrapper">
         <div className="not-found">
           <p>Sorry, that tutorial could not be found.</p>
-          <Link to="/tutorialhub">Back to list</Link>
+          <Link to="/">Back to list</Link>
         </div>
       </div>
     );
@@ -49,7 +49,7 @@ const ViewPage = () => {
         <div className="not-found-wrapper">
           <div className="not-found">
             <p>Sorry, that chapter could not be found.</p>
-            <Link to="/tutorialhub">Back to list</Link>
+            <Link to="/">Back to list</Link>
           </div>
         </div>
       );
@@ -97,7 +97,7 @@ const ViewPage = () => {
             <nav className="chapter-nav">
               {prevChapter ? (
                 <Link
-                  to={`/tutorialhub/${topicId}/${prevChapter.id}`}
+                  to={`/${topicId}/${prevChapter.id}`}
                   className="nav-link prev"
                 >
                   <span className="nav-label">← Previous</span>
@@ -108,7 +108,7 @@ const ViewPage = () => {
               )}
               {nextChapter ? (
                 <Link
-                  to={`/tutorialhub/${topicId}/${nextChapter.id}`}
+                  to={`/${topicId}/${nextChapter.id}`}
                   className="nav-link next"
                 >
                   <span className="nav-label">Next →</span>
