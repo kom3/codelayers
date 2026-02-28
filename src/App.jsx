@@ -56,7 +56,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="tutorialhub/" element={<Landing />} />
-          <Route path="tutorialhub/tutorial/:topicId" element={<ViewPage />} />
+          <Route path="tutorialhub/:topicId" element={<ViewPage />} />
         </Routes>
         <Footer />
       </Router>
