@@ -1,0 +1,9 @@
+.tutorial-card {
+  /* ensure the MUI card fills its container and allows hover styles */
+  height: 100%;
+  .subtitle {
+    /* fallback in case MUI typography isn't used */
+    font-size: 0.9rem;
+    color: #666;
+  }
+}

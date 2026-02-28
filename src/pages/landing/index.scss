@@ -1,0 +1,45 @@
+/* basic layout for landing page */
+/* landing page styles */
+.landing {
+  padding: 2rem 0;
+  background: var(--color-bg);
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  h5 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    animation: fadeInDown 0.8s ease-out;
+  }
+
+  .cards {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    opacity: 0;
+    animation: fadeIn 1s ease-out 0.5s forwards;
+  }
+}
+
+/* keyframes for animations used on landing */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

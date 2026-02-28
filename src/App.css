@@ -1,0 +1,5 @@
+/* empty by default; use index.css for global rules */
+/* you can add shared app-level selectors here if needed */
+body {
+	margin: 0;
+}
