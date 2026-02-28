@@ -44,7 +44,7 @@ const ChapterSidebar = ({ topicId, chapters, activeChapterId }) => {
 ChapterSidebar.propTypes = {
   topicId: PropTypes.string.isRequired,
   chapters: PropTypes.arrayOf(
-    PropTypes.shape({ id: PropTypes.string, title: PropTypes.string })
+    PropTypes.shape({ id: PropTypes.string, title: PropTypes.string }),
   ),
   activeChapterId: PropTypes.string,
 };

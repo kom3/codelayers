@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { Breadcrumbs, Typography } from "@mui/material";
 import tutorials from "../../data";
 import "./index.scss";
 import Section from "../../components/Section";
@@ -72,7 +73,29 @@ const ViewPage = () => {
 
   return (
     <main className="tutorial-view">
+        {/* breadcrumb navigation */}
+        <Breadcrumbs className="breadcrumb-nav" aria-label="breadcrumb">
+          <Link color="inherit" to="/">
+            Home
+          </Link>
+          {/* topic page is clickable */}
+          <Link color="inherit" to={`/${topicId}`}>{topic.title}</Link>
+          {/* show category when available; link back to topic root again for now */}
+          {selectedChapter?.category && (
+            <Link color="inherit" to={`/${topicId}`}>{selectedChapter.category}</Link>
+          )}
+          {/* finally the chapter itself; also a link so user can refresh/bookmark */}
+          {selectedChapter?.id && (
+            <Link
+              color="textPrimary"
+              to={`/${topicId}/${selectedChapter.id}`}
+            >
+              {selectedChapter.title}
+            </Link>
+          )}
+        </Breadcrumbs>
       <div className="container">
+
         {/* sidebar navigation appears only when there are multiple chapters */}
         <ChapterSidebar
           topicId={topicId}
