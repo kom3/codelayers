@@ -5,9 +5,15 @@
   padding: 1rem 0;
   font-size: 0.9rem;
   text-align: center;
+  
   margin-top: 2rem;
   position: fixed;
   bottom: 0;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 
   a {
     color: #fff;

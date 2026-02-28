@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 // material UI theme
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 // page components
 import Landing from "./pages/landing";
@@ -24,21 +24,26 @@ function App() {
   // so passing `var(...)` directly can cause the "Unsupported `var(...)`" error.
   const getCssVar = (name, fallback) => {
     try {
-      if (typeof globalThis !== 'undefined' && typeof globalThis.getComputedStyle === 'function') {
-        const v = globalThis.getComputedStyle(document.documentElement).getPropertyValue(name);
+      if (
+        typeof globalThis !== "undefined" &&
+        typeof globalThis.getComputedStyle === "function"
+      ) {
+        const v = globalThis
+          .getComputedStyle(document.documentElement)
+          .getPropertyValue(name);
         if (v) return v.trim() || fallback;
       }
     } catch (e) {
       // If reading the CSS variable fails, warn once and fall back to the provided color.
       // This should be harmless in SSR or very early envs.
       // eslint-disable-next-line no-console
-      console.warn('Could not read CSS variable', name, e);
+      console.warn("Could not read CSS variable", name, e);
     }
     return fallback;
   };
 
-  const primaryColor = getCssVar('--color-primary', '#0066cc');
-  const secondaryColor = getCssVar('--color-secondary', '#004a99');
+  const primaryColor = getCssVar("--color-primary", "#0066cc");
+  const secondaryColor = getCssVar("--color-secondary", "#004a99");
 
   const theme = createTheme({
     palette: {
@@ -46,7 +51,7 @@ function App() {
       secondary: { main: secondaryColor },
     },
     typography: {
-      fontFamily: 'Roboto, system-ui, sans-serif',
+      fontFamily: "Roboto, system-ui, sans-serif",
     },
   });
 
@@ -56,7 +61,11 @@ function App() {
         <Header />
         <Routes>
           <Route path="tutorialhub/" element={<Landing />} />
-          <Route path="tutorialhub/:topicId" element={<ViewPage />} />
+          {/* topicId is required; chapterId is optional and handled inside ViewPage */}
+          <Route
+            path="tutorialhub/:topicId/:chapterId?"
+            element={<ViewPage />}
+          />
         </Routes>
         <Footer />
       </Router>

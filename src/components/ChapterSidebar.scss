@@ -1,0 +1,76 @@
+.chapter-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  /* sticky sidebar that follows scroll */
+  position: sticky;
+  top: 51px;
+  height: fit-content;
+  max-height: 90vh;
+  overflow-y: auto;
+
+  nav {
+    padding: 1.5rem;
+    background: #fafafa;
+    border-right: 2px solid var(--color-border, #ddd);
+    border-radius: 0;
+  }
+
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav li {
+    margin: 0.25rem 0;
+  }
+
+  a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #555;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+    font-weight: 500;
+
+    &:hover {
+      background: #f0f0f0;
+      color: var(--color-primary);
+      padding-left: 1.2rem;
+    }
+  }
+
+  nav li.active > a {
+    background: var(--color-primary, #0066cc);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0, 102, 204, 0.2);
+  }
+
+  /* scrollbar styling */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+
+    &:hover {
+      background: #aaa;
+    }
+  }
+}
+
+/* collapse sidebar on narrow screens */
+@media (max-width: 768px) {
+  .chapter-sidebar {
+    display: none;
+  }
+}

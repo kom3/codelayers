@@ -13,7 +13,7 @@ import TutorialCard from "../../components/TutorialCard";
  */
 const Landing = () => {
   return (
-    <main className="landing">
+    <div className="landing">
       {/* use MUI Container for consistent padding */}
       <Container>
         <Typography variant="h5" component="h5" gutterBottom>
@@ -27,7 +27,7 @@ const Landing = () => {
           ))}
         </Grid>
       </Container>
-    </main>
+    </div>
   );
 };
 

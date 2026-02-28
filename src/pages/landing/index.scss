@@ -3,9 +3,9 @@
 .landing {
   padding: 2rem 0;
   background: var(--color-bg);
-  .container {
+  .MuiContainer-root {
     max-width: 1000px;
-    margin: 0 auto;
+    margin-top: 55px !important;
     padding: 0 1rem;
   }
   h5 {

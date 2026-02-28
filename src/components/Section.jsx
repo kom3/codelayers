@@ -1,4 +1,6 @@
 import PropTypes from "prop-types";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { a11yDark as theme } from "react-syntax-highlighter/dist/esm/styles/prism";
 import "./Section.scss";
 
 /**
@@ -6,7 +8,8 @@ import "./Section.scss";
  * - title (string)
  * - body (string with optional paragraph newlines)
  * - note (string or array -> renders as paragraph or list)
- * - code (string) -> renders as pre/code block
+ * - code (string) -> renders as pre/code block with syntax highlighting
+ * - codeLang (string) -> language for syntax highlighting (e.g. 'python', 'javascript')
  * - table ({ headers: [], rows: [ [] ] }) -> renders HTML table
  */
 const renderBody = (body) => {
@@ -49,12 +52,28 @@ const renderNote = (note) => {
   return <aside className="note">{note}</aside>;
 };
 
-const renderCode = (code, lang) => {
+const renderCode = (code, lang = "javascript") => {
   if (!code) return null;
   return (
-    <pre className="code-block">
-      <code className={lang ? `language-${lang}` : undefined}>{code}</code>
-    </pre>
+    <div className="code-block-wrapper">
+      <SyntaxHighlighter
+        language={lang}
+        style={theme}
+        className="code-block"
+        customStyle={{
+          margin: 0,
+          padding: "1.25rem",
+          borderRadius: "6px",
+          fontSize: "0.95rem",
+          lineHeight: "1.6",
+          backgroundColor: "#2d2d2d",
+        }}
+        wrapLines={true}
+        showLineNumbers={false}
+      >
+        {code}
+      </SyntaxHighlighter>
+    </div>
   );
 };
 

@@ -13,27 +13,43 @@ import "./TutorialCard.scss";
  * logic clean and makes it easy to change visual appearance in one
  * place.
  */
-const TutorialCard = ({ id, title, subtitle }) => (
-  <Card className="tutorial-card" elevation={2}>
-    <CardActionArea component={Link} to={`/tutorialhub/${id}`}>
-      <CardContent>
-        <Typography variant="h6" component="h3">
-          {title}
-        </Typography>
-        {subtitle && (
-          <Typography variant="body2" color="textSecondary">
-            {subtitle}
+// show count of chapters if available (fallback to one section)
+const TutorialCard = ({ id, title, subtitle, chapters, sections }) => {
+  let count = 0;
+  if (chapters && Array.isArray(chapters)) {
+    count = chapters.length;
+  } else if (sections) {
+    count = 1;
+  }
+  return (
+    <Card className="tutorial-card" elevation={2}>
+      <CardActionArea component={Link} to={`/tutorialhub/${id}`}>
+        <CardContent>
+          <Typography variant="h6" component="h3">
+            {title}
           </Typography>
-        )}
-      </CardContent>
-    </CardActionArea>
-  </Card>
-);
+          {subtitle && (
+            <Typography variant="body2" color="textSecondary">
+              {subtitle}
+            </Typography>
+          )}
+          {count > 1 && (
+            <Typography variant="caption" color="textSecondary">
+              {count} chapters
+            </Typography>
+          )}
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  );
+};
 
 TutorialCard.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
+  chapters: PropTypes.array,
+  sections: PropTypes.array,
 };
 
 export default TutorialCard;
