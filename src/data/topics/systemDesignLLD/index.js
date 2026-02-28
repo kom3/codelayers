@@ -13,6 +13,7 @@ const chapters = Object.values(chapterModules)
 export default {
   id: "LLD",
   title: "System Design - Low Level Design (LLD)",
+  published: true, // toggle visibility on landing page
   subtitle: "Design patterns and object-oriented design principles",
   chapters,
   footer:

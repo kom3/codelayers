@@ -19,6 +19,11 @@ const tutorials = Object.values(modules)
 	// optionally filter out anything falsy or uninitialized
 	.filter(Boolean);
 
+// note: individual topic objects may include a boolean `published` flag
+// (default true). components such as the landing page will filter out
+// entries where `published === false` so you can keep drafts in the repo
+// without showing them to users.
+
 export default tutorials;
 
 // Example of a topic structure with separate chapter files.

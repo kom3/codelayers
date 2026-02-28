@@ -20,11 +20,14 @@ const Landing = () => {
           Available Materials
         </Typography>
         <Grid container spacing={3} className="cards">
-          {tutorials.map((t) => (
-            <Grid item key={t.id} xs={12} sm={6} md={4}>
-              <TutorialCard {...t} />
-            </Grid>
-          ))}
+          {tutorials
+            // topics may include a `published` boolean; omit false values
+            .filter((t) => t.published !== false)
+            .map((t) => (
+              <Grid item key={t.id} xs={12} sm={6} md={4}>
+                <TutorialCard {...t} />
+              </Grid>
+            ))}
         </Grid>
       </Container>
     </div>

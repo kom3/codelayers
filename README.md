@@ -50,6 +50,8 @@ const chapters = Object.values(chapterModules)
 export default {
   id: "DSA",
   title: "Data Structures & Algorithms",
+  // optional: hide topic from landing page
+  // published: false,
   chapters,
 };
 ```

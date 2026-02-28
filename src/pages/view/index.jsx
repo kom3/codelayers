@@ -20,12 +20,16 @@ const ViewPage = () => {
   // topicId is always present; chapterId may be undefined
   const { topicId, chapterId } = useParams();
   const topic = tutorials.find((t) => t.id === topicId);
+  // topics may be unpublished; treat them as missing for routing purposes
+  const isTopicVisible = topic && topic.published !== false;
 
-  if (!topic) {
+  if (!isTopicVisible) {
     return (
-      <div className="not-found">
-        <p>Sorry, that tutorial could not be found.</p>
-        <Link to="/">Back to list</Link>
+      <div className="not-found-wrapper">
+        <div className="not-found">
+          <p>Sorry, that tutorial could not be found.</p>
+          <Link to="/tutorialhub">Back to list</Link>
+        </div>
       </div>
     );
   }
@@ -42,9 +46,11 @@ const ViewPage = () => {
     if (!activeChapter) {
       // invalid chapter requested
       return (
-        <div className="not-found">
-          <p>Sorry, that chapter could not be found.</p>
-          <Link to="/">Back to list</Link>
+        <div className="not-found-wrapper">
+          <div className="not-found">
+            <p>Sorry, that chapter could not be found.</p>
+            <Link to="/tutorialhub">Back to list</Link>
+          </div>
         </div>
       );
     }
@@ -55,9 +61,10 @@ const ViewPage = () => {
 
   // find the current chapter index for next/previous navigation
   const currentChapterIndex = chapters.findIndex(
-    (c) => c.id === selectedChapter?.id
+    (c) => c.id === selectedChapter?.id,
   );
-  const prevChapter = currentChapterIndex > 0 ? chapters[currentChapterIndex - 1] : null;
+  const prevChapter =
+    currentChapterIndex > 0 ? chapters[currentChapterIndex - 1] : null;
   const nextChapter =
     currentChapterIndex < chapters.length - 1
       ? chapters[currentChapterIndex + 1]
@@ -77,6 +84,7 @@ const ViewPage = () => {
           {topic.subtitle && <h2>{topic.subtitle}</h2>}
 
           {/* render selected chapter */}
+          <h2>{selectedChapter?.title}</h2>
           {selectedChapter?.sections.map((section, idx) => (
             <Section key={section.title ?? idx} {...section} />
           ))}
@@ -88,7 +96,10 @@ const ViewPage = () => {
           {chapters.length > 1 && (
             <nav className="chapter-nav">
               {prevChapter ? (
-                <Link to={`/tutorialhub/${topicId}/${prevChapter.id}`} className="nav-link prev">
+                <Link
+                  to={`/tutorialhub/${topicId}/${prevChapter.id}`}
+                  className="nav-link prev"
+                >
                   <span className="nav-label">← Previous</span>
                   <span className="nav-title">{prevChapter.title}</span>
                 </Link>
@@ -96,7 +107,10 @@ const ViewPage = () => {
                 <div className="nav-link disabled" />
               )}
               {nextChapter ? (
-                <Link to={`/tutorialhub/${topicId}/${nextChapter.id}`} className="nav-link next">
+                <Link
+                  to={`/tutorialhub/${topicId}/${nextChapter.id}`}
+                  className="nav-link next"
+                >
                   <span className="nav-label">Next →</span>
                   <span className="nav-title">{nextChapter.title}</span>
                 </Link>
