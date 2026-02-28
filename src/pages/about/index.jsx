@@ -1,14 +1,23 @@
 import React from "react";
 import "./index.scss";
+import mypic from "../../assets/mypic.jpg"
 
 const About = () => (
   <main className="about-page">
     <div className="container">
-      <h1>About the Author</h1>
-      <p>
-        Hi, I’m Manjunath. I am a Full Stack Developer with a deep passion for
-        building scalable systems and continuously learning new technologies.
-      </p>
+      <div className="about-content">
+        <div className="image-placeholder">
+          <img
+            src={mypic}
+            alt="Author profile"
+          />
+        </div>
+        <div className="about-text">
+          <h1>About the Author</h1>
+          <p>
+            Hi, I'm Manjunath. I am a Full Stack Developer with a deep passion for
+            building scalable systems and continuously learning new technologies.
+          </p>
       <p>
         Over the years, I’ve worked across the full stack — from crafting
         intuitive front-end experiences in React, to building robust backend
@@ -33,6 +42,8 @@ const About = () => (
         </li>
         <li>A beginner-friendly and interview-ready resource for others</li>
       </ul>
+        </div>
+      </div>
     </div>
   </main>
 );

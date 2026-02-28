@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { Breadcrumbs, Typography } from "@mui/material";
+import { Breadcrumbs } from "@mui/material";
 import tutorials from "../../data";
 import "./index.scss";
 import Section from "../../components/Section";
